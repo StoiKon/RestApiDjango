@@ -146,10 +146,12 @@ def listComments(request):
    queryset = Sxolio.objects.all()
    serializers = SxolioSerializer(queryset,many=True)
    return JsonResponse(serializers.data,safe=0)
-
+#problem here
 def listCommentsEidhshs(request,arg):
-   queryset=Sxolioeidhshs.objects.all()
-   serializers = SxolioEidhshsSerializer(queryset,many=True)
+   queryset = Sxolioeidhshs.objects.filter(eid=arg).values_list('sid',flat=1)
+
+   obj=Sxolio.objects.filter(id__in=queryset)
+   serializers=SxolioSerializer(obj,many=1)
    return JsonResponse(serializers.data,safe=0)
 
 #--------------------THEMATA--------------------------
@@ -214,10 +216,10 @@ def associateThemaEidhsh(request):
       serializer.save()
       return JsonResponse(serializer.data)
    return JsonResponse(serializer.errors)
-
+#PoblemHere
 @api_view(['GET'])
 def showEidhseisThematos(request,arg):
-   obj = Themaeidhshs.objects.get(id = arg)
-   obj2 = Eidhsh.objects.get(id=obj.eid)
-   serializer = EidhshSerializer(obj2,many=1,data=request.data)
-   return JsonResponse(serializer.data)
+   qs = Themaeidhshs.objects.filter(id = arg).values_list('eid',flat=1)
+   obj2 = Eidhsh.objects.filter(id__in=qs)
+   serializer = EidhshSerializer(obj2,many=1)
+   return JsonResponse(serializer.data,safe=0)

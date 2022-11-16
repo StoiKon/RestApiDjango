@@ -25,7 +25,7 @@ class SxolioSerializer(serializers.ModelSerializer):
 class SxolioEidhshsSerializer(serializers.ModelSerializer):
    class Meta:
        model = Sxolioeidhshs
-       fields = ('eid','sid')
+       fields = ('id','eid','sid')
 
 class ThemaSerializer(serializers.ModelSerializer):
    class Meta:
@@ -35,7 +35,7 @@ class ThemaSerializer(serializers.ModelSerializer):
 class ThemaEidhshsSerializer(serializers.ModelSerializer):
    class Meta:
        model = Themaeidhshs
-       fields = ('eid','thid')
+       fields = ('id','eid','thid')
 
 class XrhsthsSerializer(serializers.ModelSerializer):
    class Meta:

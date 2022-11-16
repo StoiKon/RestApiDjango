@@ -43,5 +43,5 @@ urlpatterns = [
     path('denyThema/<int:arg>/', denyThema),
     path('searchThema/<str:arg1>/', searchThema),
     path('associateThemaEidhsh/', associateThemaEidhsh),
-    path('showEidhseisThematos/<str:arg>/', showEidhseisThematos),
+    path('showEidhseisThematos/<int:arg>/', showEidhseisThematos),
 ]

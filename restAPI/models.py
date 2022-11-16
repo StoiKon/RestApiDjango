@@ -55,6 +55,7 @@ class Sxolio(models.Model):
 
 
 class Sxolioeidhshs(models.Model):
+    id = models.BigAutoField(primary_key=True)
     eid = models.ForeignKey(Eidhsh, models.DO_NOTHING, db_column='Eid', blank=True, null=True)  # Field name made lowercase.
     sid = models.ForeignKey(Sxolio, models.DO_NOTHING, db_column='Sid', blank=True, null=True)  # Field name made lowercase.
 
@@ -74,6 +75,7 @@ class Thema(models.Model):
 
 
 class Themaeidhshs(models.Model):
+    id = models.BigAutoField(primary_key=True)
     eid = models.ForeignKey(Eidhsh, models.DO_NOTHING, db_column='Eid', blank=True, null=True)  # Field name made lowercase.
     thid = models.ForeignKey(Thema, models.DO_NOTHING, db_column='Thid', blank=True, null=True)  # Field name made lowercase.
 
